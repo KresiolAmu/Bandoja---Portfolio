@@ -28,4 +28,5 @@ LabActivity 4 - objective is to use photoresistor that will sense light and when
 - using Serial.available() function to read inputs from serial monitor
 - when typed "stop", regardless of casing, the code will halt functioning.
 
-LabActivity 5 - 
+LabActivity 5 - objective is to create a circuit that will provide a connection through fastapi, and those who will connect can control the LED of the circuit to turn ON and OFF.
+- **
