@@ -17,10 +17,11 @@ LabActivity 3- objective is to imitate a fire detector using photoresistor and t
 - Temperature sensor is at pin A0.
 - Photoresistor is at pin A2.
 - LED is at pin 12.
-- - using analogRead() to photoresistor and temperature sensor to get input from sensors.
+- using analogRead() to photoresistor and temperature sensor to get input from sensors.
 - using map() function to transform the analog reading from sensors to digital values.
 - when a certain threshold set in photoresistor and temperature sensor is met then the LED will blink ON and OFF. 
 <br>
+
 LabActivity 4 - objective is to use photoresistor that will sense light and when a certain threshold is met, then an LED will blink ON and OFF, and when typed "stop" in serial monitor, regardless of casing then it will stop functioning.
 - Photoresistor is at pin A2.
 - LED is at pin 13.
@@ -29,6 +30,7 @@ LabActivity 4 - objective is to use photoresistor that will sense light and when
 - using Serial.available() function to read inputs from serial monitor.
 - when typed "stop", regardless of casing, the code will halt functioning. 
 <br>
+
 LabActivity 5 - objective is to create a circuit that will provide a connection through fastapi, and those who will connect can control the LED of the circuit to turn ON and OFF.
 - The **arduino code** functions that when it receive an input value of '1' then the LED will turn ON. When input received is '0' then LED will turn OFF.
 - The **python code** enables controlling of the arduino and establishing connection using fastapi.
@@ -37,4 +39,5 @@ LabActivity 5 - objective is to create a circuit that will provide a connection 
 - In POST LED ON, when the fastapi receives a request to turn ON, then it will pass a byte string '1' to the arduino which will trigger the LED to turn on.
 - In POST LED OFF, when the fastapi receives a request to turn OFF, then it will pass a byte string '0' to the arduino which will trigger the LED to turn off. 
 <br>
+
 LabActivity 6 - 
