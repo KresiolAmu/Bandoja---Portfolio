@@ -6,11 +6,13 @@ LabActivity 1 - objective is to create a running light from right to left using 
 - turn LED ON starting from pin 12 to 8.
 - after all LED is on, then turn LED OFF starting from pins 12 to 8.
 <br>
+
 LabActivity 2 - objective is to add brightness control to the output of LabActivity1.
 - using the output of LabActivity1.
 - use analogWrite() to create a fade effect.
 - using while loop to repeatedly put increment to analogWrite() to slowly increase or decrease the brightness of each LED when turning ON or OFF.
 <br>
+
 LabActivity 3- objective is to imitate a fire detector using photoresistor and thermistor, however, since tinkercad doesn't have thermistor, a temperature sensor was substituted.
 - Temperature sensor is at pin A0.
 - Photoresistor is at pin A2.
