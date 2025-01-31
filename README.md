@@ -15,10 +15,17 @@ LabActivity 3- objective is to imitate a fire detector using photoresistor and t
 - Temperature sensor is at pin A0
 - Photoresistor is at pin A2
 - LED is at pin 12
-- using map() function to transform the analog reading values to digital values
-- using analogRead() to photoresistor and temperature sensor to get input from sensors.
-- when a certain threshold set in photoresistor and temperature sensor is met then an LED will blink ON and OFF.
+- - using analogRead() to photoresistor and temperature sensor to get input from sensors.
+- using map() function to transform the analog reading from sensors to digital values
+- when a certain threshold set in photoresistor and temperature sensor is met then the LED will blink ON and OFF.
 
 
 LabActivity 4 - objective is to use photoresistor that will sense light and when a certain threshold is met, then an LED will blink ON and OFF, and when typed "stop" in serial monitor, regardless of casing then it will stop functioning.
-- 
+- Photoresistor is at pin A2
+- LED is at pin 13
+- using map() function to transform the analog reading from photoresistor to digital values.
+- when a certain threshold is met, then the LED will blink
+- using Serial.available() function to read inputs from serial monitor
+- when typed "stop", regardless of casing, the code will halt functioning.
+
+LabActivity 5 - 
