@@ -1,95 +1,38 @@
-#include <WiFiS3.h>
+int ledArray[] = {12, 11,10,9, 8}; //led pins put into array
+int i = 0; //initialized i to use later
+int fade = 0; //initialized variable fade to use later
+int reading = 1023; //variable for analog reading
+int brightness = map(reading, 0, 1023, 0, 255); //convert analog reading 
 
-char ssid[] = "HUAWEI-rXja";        // your network SSID (name)
-char pass[] = "39MzHQKD";    // your network password
-int status = WL_IDLE_STATUS;     // the WiFi radio's status
 
-void setup() {
-  //Initialize serial and wait for port to open:
-  Serial.begin(9600);
-
-  // check for the WiFi module:
-  if (WiFi.status() == WL_NO_MODULE) {
-    Serial.println("Communication with WiFi module failed!");
-    // don't continue
-    while (true);
-  }
-
-  String fv = WiFi.firmwareVersion();
-  if (fv < WIFI_FIRMWARE_LATEST_VERSION) {
-    Serial.println("Please upgrade the firmware");
-  }
-
-  // attempt to connect to WiFi network:
-  while (status != WL_CONNECTED) {
-    Serial.print("Attempting to connect to WPA SSID: ");
-    Serial.println(ssid);
-    // Connect to WPA/WPA2 network:
-    status = WiFi.begin(ssid, pass);
-
-    // wait 10 seconds for connection:
-    delay(10000);
-  }
-
-  // you're connected now, so print out the data:
-  Serial.print("You're connected to the network");
-  printCurrentNet();
-  printWifiData();
-
+void setup(){
+  Serial.begin(9600); 
 }
 
-void loop() {
-  // check the network connection once every 10 seconds:
-  delay(10000);
-  printCurrentNet();
-}
-
-void printWifiData() {
-  // print your board's IP address:
-  IPAddress ip = WiFi.localIP();
-  Serial.print("IP Address: ");
+void loop(){
+  while(i < (sizeof(ledArray)/sizeof(int))){ //loop of array led pin according to array length
+    while(fade <= brightness){ //fade effect, max value is brightness
+    	analogWrite(ledArray[i], fade); //turning led on
+    	fade += 5; //increment for led turning ON fade effect
+      	delay(30);
+    }
+    fade = 0; //resets fade to 0 so next led starts from 0
+   	i++; //increment to next led
+    delay(1000);
+  }
+  i = 0; //resets led back to index 0
+  		// current value of fade is set on value of brightness  
   
-  Serial.println(ip);
-
-  // print your MAC address:
-  byte mac[6];
-  WiFi.macAddress(mac);
-  Serial.print("MAC address: ");
-  printMacAddress(mac);
-}
-
-void printCurrentNet() {
-  // print the SSID of the network you're attached to:
-  Serial.print("SSID: ");
-  Serial.println(WiFi.SSID());
-
-  // print the MAC address of the router you're attached to:
-  byte bssid[6];
-  WiFi.BSSID(bssid);
-  Serial.print("BSSID: ");
-  printMacAddress(bssid);
-
-  // print the received signal strength:
-  long rssi = WiFi.RSSI();
-  Serial.print("signal strength (RSSI):");
-  Serial.println(rssi);
-
-  // print the encryption type:
-  byte encryption = WiFi.encryptionType();
-  Serial.print("Encryption Type:");
-  Serial.println(encryption, HEX);
-  Serial.println();
-}
-
-void printMacAddress(byte mac[]) {
-  for (int i = 5; i >= 0; i--) {
-    if (mac[i] < 16) {
-      Serial.print("0");
+  while(i < (sizeof(ledArray)/sizeof(int))){
+    while(fade >= 0){ //fade is decreasing to 0, turning OFF
+    	analogWrite(ledArray[i], fade);
+    	fade -= 5; //decrement to turning OFF fade effect
+      	delay(30);
     }
-    Serial.print(mac[i], HEX);
-    if (i > 0) {
-      Serial.print(":");
-    }
+    fade = brightness; //resets fade value back to maximum ON value which is birghtness value
+   	i++; //increment to next led
+    delay(1000);
   }
-  Serial.println();
+  i = 0; //resets led back to index 0 for another loop
+  fade = 0; //resets fade to 0 to prepapre for next turning ON loop
 }
