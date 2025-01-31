@@ -29,4 +29,11 @@ LabActivity 4 - objective is to use photoresistor that will sense light and when
 - when typed "stop", regardless of casing, the code will halt functioning.
 
 LabActivity 5 - objective is to create a circuit that will provide a connection through fastapi, and those who will connect can control the LED of the circuit to turn ON and OFF.
-- **
+- The **arduino code** functions that when it receive an input value of '1' then the LED will turn ON. When input received is '0' then LED will turn OFF.
+- The **python code** enables controlling of the arduino and establishing connection using fastapi.
+- In startup event, it attempts to connect to the arduino with time.sleep(2) to ensure that the connection is fully opened up.
+- In shutdown event, it simply closes the connection to the arduino
+- In POST LED ON, when the fastapi receives a request to turn ON, then it will pass a byte string '1' to the arduino which will trigger the LED to turn on.
+- In POST LED OFF, when the fastapi receives a request to turn OFF, then it will pass a byte string '0' to the arduino which will trigger the LED to turn off.
+
+LabActivity 6 - 
